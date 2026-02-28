@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== FONTS ===== */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay[wght].woff2") format("woff2-variations");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit[wght].woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #060608;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a84c;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e2c06a;
+}
+
+/* ===== DESIGN TOKENS ===== */
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* DIXM Luxury Dark Theme */
+    --background: 0.06 0.008 275;
+    --foreground: 0.96 0.005 275;
+
+    --card: 0.1 0.008 275;
+    --card-foreground: 0.96 0.005 275;
+
+    --popover: 0.12 0.008 275;
+    --popover-foreground: 0.96 0.005 275;
+
+    /* Gold Primary */
+    --primary: 0.72 0.12 70;
+    --primary-foreground: 0.06 0.008 275;
+
+    /* Muted Dark Gold */
+    --secondary: 0.4 0.06 70;
+    --secondary-foreground: 0.96 0.005 275;
+
+    --muted: 0.18 0.008 275;
+    --muted-foreground: 0.6 0.01 275;
+
+    /* Bright Gold Accent */
+    --accent: 0.78 0.15 72;
+    --accent-foreground: 0.06 0.008 275;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.22 0.01 275;
+    --input: 0.18 0.01 275;
+    --ring: 0.72 0.12 70;
+
+    /* Charts */
+    --chart-1: 0.72 0.12 70;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    /* Sidebar */
+    --sidebar: 0.08 0.008 275;
+    --sidebar-foreground: 0.96 0.005 275;
+    --sidebar-primary: 0.72 0.12 70;
+    --sidebar-primary-foreground: 0.06 0.008 275;
+    --sidebar-accent: 0.18 0.008 275;
+    --sidebar-accent-foreground: 0.96 0.005 275;
+    --sidebar-border: 0.22 0.01 275;
+    --sidebar-ring: 0.72 0.12 70;
+
+    /* DIXM Custom */
+    --gold: 0.72 0.12 70;
+    --gold-bright: 0.78 0.15 72;
+    --gold-muted: 0.4 0.06 70;
+    --dark-base: 0.06 0.008 275;
+    --dark-card: 0.1 0.008 275;
+    --dark-elevated: 0.14 0.008 275;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Outfit", sans-serif;
+    background-color: #060608;
+    color: #f5f3ef;
+    overflow-x: hidden;
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.font-display {
+  font-family: "Playfair Display", serif;
+}
+
+.font-body {
+  font-family: "Outfit", sans-serif;
+}
+
+.text-gold {
+  color: oklch(0.72 0.12 70);
+}
+
+.text-gold-bright {
+  color: oklch(0.78 0.15 72);
+}
+
+.bg-dark-base {
+  background-color: #060608;
+}
+
+.bg-dark-card {
+  background-color: oklch(0.1 0.008 275);
+}
+
+.border-gold {
+  border-color: oklch(0.72 0.12 70);
+}
+
+.glow-gold {
+  box-shadow: 0 0 20px oklch(0.72 0.12 70 / 0.4), 0 0 60px oklch(0.72 0.12 70 / 0.2);
+}
+
+.glow-gold-text {
+  text-shadow: 0 0 30px oklch(0.78 0.15 72 / 0.6);
+}
+
+/* Brush stroke clip path utility */
+.brush-clip {
+  clip-path: polygon(0% 15%, 5% 0%, 95% 5%, 100% 20%, 98% 80%, 100% 100%, 3% 95%, 0% 85%);
+}
+
+/* 3D perspective utility */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+/* Section separator */
+.section-divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, oklch(0.72 0.12 70), transparent);
+  margin: 1.5rem auto;
+}
+
+/* Noise texture overlay */
+.noise-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Gold gradient text */
+.gradient-gold-text {
+  background: linear-gradient(135deg, #c9a84c 0%, #f0d060 40%, #c9a84c 70%, #a07830 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated underline gold */
+.gold-underline {
+  position: relative;
+}
+.gold-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: oklch(0.78 0.15 72);
+  transition: width 0.4s ease;
+}
+.gold-underline:hover::after {
+  width: 100%;
+}
+
+/* Canvas container */
+.canvas-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
